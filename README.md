@@ -1,126 +1,100 @@
-# Unit 06: Server-Side APIs
+# 06 Server-Side APIs: Weather Dashboard
 
-## Overview:
+## Your Task
 
-In a full-stack application, the client (i.e., the front end) makes requests to the server (i.e., the back end) to get data to display to the user. One way the client can request this data is by using the Fetch Web API. The Fetch API can even request data from third-party APIs, like the OpenWeather API.
+Third-party APIs allow developers to access their data and functionality by making requests with specific parameters to a URL. Developers are often tasked with retrieving data from another application's API and using it in the context of their own. Your challenge is to build a weather dashboard that will run in the browser and feature dynamically updated HTML and CSS.
 
-In this unit, we'll use the `fetch()` method to make requests, parse through the returned datasets, and convert them to HTML elements. We'll explore how this data is typically formatted, how to look for and handle errors that might arise, and more importantly, how to read documentation when working with server-side APIs.
+Use the [OpenWeather One Call API](https://openweathermap.org/api/one-call-api) to retrieve weather data for cities. Read through the documentation for setup and usage instructions. You will use `localStorage` to store any persistent data. For more information on how to work with the OpenWeather API, refer to the [Full-Stack Blog on how to use API keys](https://coding-boot-camp.github.io/full-stack/apis/how-to-use-api-keys).
 
-## Key Topics
+## User Story
 
-We'll cover the following topics in this unit:
+```
+AS A traveler
+I WANT to see the weather outlook for multiple cities
+SO THAT I can plan a trip accordingly
+```
 
-* [Client-Server model](https://developer.mozilla.org/en-US/docs/Learn/Server-side/First_steps/Client-Server_overview)
+## Acceptance Criteria
 
-* [JSON](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON)
+```
+GIVEN a weather dashboard with form inputs
+WHEN I search for a city
+THEN I am presented with current and future conditions for that city and that city is added to the search history
+WHEN I view current weather conditions for that city
+THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV index
+WHEN I view the UV index
+THEN I am presented with a color that indicates whether the conditions are favorable, moderate, or severe
+WHEN I view future weather conditions for that city
+THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity
+WHEN I click on a city in the search history
+THEN I am again presented with current and future conditions for that city
+```
 
-* [URLs](https://developer.mozilla.org/en-US/docs/Web/API/URL)
+## Mock-Up
 
-* [HTTP GET method](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/GET)
+The following image shows the web application's appearance and functionality:
 
-* [HTTP status codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
+![The weather app includes a search option, a list of cities, and a five-day forecast and current weather conditions for Atlanta.](./Assets/06-server-side-apis-homework-demo.png)
 
-* [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
+## Grading Requirements
 
-* [cURL](https://curl.se/docs/httpscripting.html)
+> **Note**: If a homework assignment submission is marked as “0”, it is considered incomplete and will not count towards your graduation requirements. Examples of incomplete submissions include the following:
+>
+> * A repository that has no code
+>
+> * A repository that includes a unique name but nothing else
+>
+> * A repository that includes only a README file but nothing else
+>
+> * A repository that only includes starter code
 
-* [Location API](https://developer.mozilla.org/en-US/docs/Web/API/Location)
+This homework is graded based on the following criteria: 
 
-## Learning Objectives
+### Technical Acceptance Criteria: 40%
 
-You will be employer-ready if you are able to:
+* Satisfies all of the above acceptance criteria plus the following:
 
-* Explain what JSON is.
+    * Uses the OpenWeather API to retrieve weather data.
 
-* Explain the methods that can be used to request data from the server.
+    * Uses `localStorage` to store persistent data.
 
-* Explain the difference between a client-side and server-side API.
+### Deployment: 32%
 
-* Explain the client-server model and request-response pattern.
+* Application deployed at live URL.
 
-* Implement and explain the differences between making HTTP GET requests with XMLHttpRequest, jQuery AJAX, and the Fetch API.
+* Application loads with no errors.
 
-* Explain HTTP response codes and handle response metadata with the Fetch API.
+* Application GitHub URL submitted.
 
-* Parse JSON to dynamically generate HTML.
+* GitHub repository that contains application code.
 
-* Explain the benefits and challenges of working with asynchronous JavaScript.
+### Application Quality: 15%
 
-* Explain and implement URL query string parameters.
+* Application user experience is intuitive and easy to navigate.
 
-## Technical Interview Preparation
+* Application user interface style is clean and polished.
 
-You will be employer-competitive if you are able to solve the following algorithms and successfully complete the assessments.
+* Application resembles the mock-up functionality provided in the homework instructions.
 
-### Algorithms
+### Repository Quality: 13%
 
-* [01: Is Palindrome](./03-Algorithms/01-is-palindrome)
+* Repository has a unique name.
 
-* [02: Factorial](./03-Algorithms/02-factorial)
+* Repository follows best practices for file structure and naming conventions.
 
-  * [📹 Let's Code Factorial!](https://2u-20.wistia.com/medias/gnyfobes5c)
+* Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
 
-* [03: Title Case](./03-Algorithms/03-title-case)
+* Repository contains multiple descriptive commit messages.
 
-### Assessments
+* Repository contains quality readme file with description, screenshot, and link to deployed application.
 
-Assess your knowledge by answering technical interview questions and solving coding challenges.
+## Review
 
-* [Unit 06 Assessment](https://forms.gle/xcqMRiysBemJpvz78)
+You are required to submit BOTH of the following for review:
 
-## Homework
+* The URL of the functional, deployed application.
 
-For your homework, you'll build a weather dashboard using various endpoints from the OpenWeather API.
+* The URL of the GitHub repository. Give the repository a unique name and include a readme describing the project.
 
-## Career Connection
-
-Career services material for this unit is located in the [Career Connection folder](./04-Career-Connection/README.md). For more information about career services, including coding milestones, demo days, technical toolkits, workshops, and additional resources, visit the [career services website](https://careernetwork.2u.com/?utm_medium=Academics&utm_source=boot_camp/).
-
-## Heads-Up
-
-Get ready for your first group project! In the next unit, you and your teammates will use all of your new skills to build an app of your choosing.
-
-## Resources
-
-Here are some additional resources to help solidify the topics covered in this unit.
-
-### Code Review Videos
-
-Watch the `📹 Code Review` video(s) to help you grasp the concept of each topic.
-
-  * [📹 Code Review: Fetch!](https://2u-20.wistia.com/medias/xl4b9n3l1z)
-
-  * [📹 Code Review: Network, Status, Location!](https://2u-20.wistia.com/medias/smcipszslc)
-
-  * [📹 Code Review: Parse JSON to Generate HTML!](https://2u-20.wistia.com/medias/3d6yqoeyzb)
-
-  * [📹 Code Review: HTTP Response!](https://2u-20.wistia.com/medias/24ne9a6v8t)
-
-  * [📹 Launch Ready: MVP and GitHub Project!](https://2u-20.wistia.com/medias/9p2hr71gaw)
-
-### Git Guide
-
-Refer to the Git Guide to review the git concept for this unit. Watch the `📹 Git Guide` video for an additional walkthrough of the git concept.
-
-  * 📖 [Git Guide: Project Collaboration](./01-Activities/26-Evr_Git-Collaboration)
-
-  * 📹 [Git Guide Video: Project Collaboration](https://2u-20.wistia.com/medias/60x5om18ac)
-
-### Full-Stack Blog Posts
-
-Check out the [Full-Stack Blog](https://coding-boot-camp.github.io/full-stack/) for additional resources, like walkthroughs, articles, and installation guides.
-
-  * 📖 [How to Use API Keys](https://coding-boot-camp.github.io/full-stack/apis/how-to-use-api-keys)
-
-### General
-
-Refer to these resources for additional information about topics covered in this unit.
-
-* 📖 [GitHub API documentation](https://docs.github.com/en/rest/reference)
-
-* 📖 [OpenWeather API documentation](https://openweathermap.org/api)
-
-* 📖 [Chrome DevTools tutorial on inspecting network activity](https://developers.google.com/web/tools/chrome-devtools/network)
-
----
+- - -
 © 2022 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved.
