@@ -36,7 +36,7 @@
     </header>
     <main>
         <!--sidebar with form in it-->
-        <div class=" row sidebar">
+        <div class=" row sidesearch">
             <form class="col-md-2">
                 <div class="form-group">
                   <h3>Search by City:</h3>
@@ -58,7 +58,7 @@
 
         </div>
         <!--Weather information-->
-        <div class="weather-info  container row-md-6">
+        <div class="weatherbox  container row-md-8">
           <figure class="current-weather" id="current-weather">
               <p id="current-temp"></p>
               <p id="current-windspeed"></p>
@@ -66,12 +66,36 @@
               <p id="current-uv"></p>
           </figure>
         </div>
-        <!--5 day forecast-->
-        <div class="forecast col-md-1" id="forecast">
-          
-          
 
-        </div>
+        <div class="weatherbox col-md-8">
+          <div class="row p-2">
+              <div class="card">
+                  <div class="card-body">
+                      <div class="cityDate info"></div>
+                      <br>
+                      <span class="current-temp"></span>
+                      <br>
+                      <span class="current-windspeed"></span>
+                      <br>
+                      <span class="current-humidity"></span>
+                      <br>
+                      <span class="current-uv"></span>
+                  </div>
+              </div>
+
+              <!-- 5-Day Forecast -->
+              <div class="row forecast" id = "forecast">
+                <h4>5 Day Forecast</h2>
+              </div>
+              </div>
+              <div class="fiveDayForecast row"></div>
+              </div>
+
+              </div>
+              </div>
+
+
+       
     </main>
     
 </body>
