@@ -1,6 +1,6 @@
-var key = "3ec592439e8da5077918559215eac651"
+var key = "eb46ad09688e7726ac134b7d1f32783d"
 
-var cityName = $("#citySearch").val()
+var cityName;
 let storedCity = JSON.parse(localStorage.getItem("City")) || [];
 
 
@@ -13,8 +13,8 @@ let storedCity = JSON.parse(localStorage.getItem("City")) || [];
 
 
 var getWeather = function (cityName) {
-    let weatherApiCall = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + key + "&units=imperial"
-    fetch(weatherApiCall)
+let weatherApi = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=eb46ad09688e7726ac134b7d1f32783d";
+    fetch(weatherApi)
 // call and response to and from the api
     .then(function (response) {
         //console.log(response)
@@ -23,9 +23,11 @@ var getWeather = function (cityName) {
     })
     //information that was hard coded into the url
     .then(function (data) {
-        if (data.cod !=="200"){
+        if (data.cod !== "200"){
+            console.log("City Not Found!");
             return;
-        } getCityInfo(dtat.coord.lat, data.city.coord.lon);
+        } 
+        getCityInfo(data.city.coord.lat, data.city.coord.lon);
     })
     .catch(err => console.log(err));
 };
@@ -33,34 +35,39 @@ var getWeather = function (cityName) {
 //     getWeatherInfo()
 // }) 
 
+
+function addWeatherEventListener() {
+    var presetCityButtons = document.querySelectorAll(".cityNames");
+    presetCityButtons.forEach(function (btn) {
+        btn.addEventListener("click", function (e) {
+            cityName = e.target.innerText;
+            getWeather(cityName);
+        });
+    });
+}
+
     var searchButton = document.getElementById("search-btn");
     searchButton.addEventListener("click", function () {
-        cityName = $("#citySearch").val();
+        cityName = $("#cityInput").val();
         getWeather(cityName);
         console.log(storedCity)
         storedCity.push(cityName);
 
-        var addNewButton = document.createElement("button");
-        addNewButton.setAttribute("class", "cityNames");
-        addNewButton.textContent = cityName;
-        $("#presetCities").append(addNewButton);
-    
-        localStorage.setItem("City", JSON.stringify(storedCity));
-        addWeatherEventListener();
     });
+
 
     // Setting up date function
     let date = function (time) {
         let someDate = new Date();
         someDate.setTime(time * 1000);
-        let dd = someDate.getDate();
-        let mm = someDate.getMonth() + 1;
+        let d = someDate.getDate();
+        let m = someDate.getMonth() + 1;
         let y = someDate.getFullYear();
-        return mm + '/' + dd + '/' + y;
+        return m + '/' + d + '/' + y;
     };
 
     var getCityInfo = function (lat, lon) {
-        let uvApi = 'https://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&lon=' + lon + '&appid=' + key + '&units=metric'
+        let uvApi = 'https://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&lon=' + lon + '&appid=eb46ad09688e7726ac134b7d1f32783d' + '&units=metric'
         fetch(uvApi)
             .then(function (response) {
                 return response.json();

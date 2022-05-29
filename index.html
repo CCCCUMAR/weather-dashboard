@@ -29,74 +29,62 @@
     <title>weather dashboard</title>
 </head>
 <body>
-    <header>
-        <nav>
-            <h1>Weather Dashboard</h1>
-        </nav>
-    </header>
-    <main>
-        <!--sidebar with form in it-->
-        <div class=" row sidesearch">
-            <form class="col-md-2">
-                <div class="form-group">
-                  <h3>Search by City:</h3>
-                  <input id="citySearch" type="text" class="form-control">
+
+  <div class=" container-fluid">
+         <header>
+           <h1>Weather Dashboard</h1>
+        </header>
+        <div class="row">
+              <div class="sidesearch col-md-4">
+                <!-- Search for a City sidebar -->
+                <div class="mt-2" id="response-container">
+                    <label id="searchTitle" for="cityInput">Search by City:</label>
+                    <input type="text" placeholder="Eagan" id="cityInput" name="cityInput"><br>
+                    <button id="search-btn">Search</button>
                 </div>
-                <button type="button" class="mb-3 btn-primary btn" id="search-btn">Search</button>
-              </form>
-        </div>
-        <!--Buttons with major cities-->
-        <div class="d-flex flex-column align-items-start major cities">
-            <button type="button" class="btn btn-outline-secondary btns">Austin</button>
-            <button type="button" class="btn btn-outline-secondary btns">Chicago</button>
-            <button type="button" class="btn btn-outline-secondary btns">New York</button>
-            <button type="button" class="btn btn-outline-secondary btns">Orlando</button>
-            <button type="button" class="btn btn-outline-secondary btns">San Francisco</button>
-            <button type="button" class="btn btn-outline-secondary btns">Seattle</button>
-            <button type="button" class="btn btn-outline-secondary btns">Denver</button>
-            <button type="button" class="btn btn-outline-secondary btns">Atlanta</button>
+                <div class=lineBreak></div>
+                <div class="list-group"></div>
+                <!-- Add preset city names -->
+                <div id="presetCities">
+                  <button type="button" class="btn btn-outline-secondary btns">Austin</button>
+                  <button type="button" class="btn btn-outline-secondary btns">Chicago</button>
+                  <button type="button" class="btn btn-outline-secondary btns">New York</button>
+                  <button type="button" class="btn btn-outline-secondary btns">Orlando</button>
+                  <button type="button" class="btn btn-outline-secondary btns">San Francisco</button>
+                  <button type="button" class="btn btn-outline-secondary btns">Seattle</button>
+                  <button type="button" class="btn btn-outline-secondary btns">Denver</button>
+                  <button type="button" class="btn btn-outline-secondary btns">Atlanta</button>
+                </div>
 
-        </div>
-        <!--Weather information-->
-        <div class="weatherbox  container row-md-8">
-          <figure class="current-weather" id="current-weather">
-              <p id="current-temp"></p>
-              <p id="current-windspeed"></p>
-              <p id="current-humidity"></p>
-              <p id="current-uv"></p>
-          </figure>
-        </div>
 
-        <div class="weatherbox col-md-8">
-          <div class="row p-2">
-              <div class="card">
-                  <div class="card-body">
-                      <div class="cityDate info"></div>
-                      <br>
-                      <span class="current-temp"></span>
-                      <br>
-                      <span class="current-windspeed"></span>
-                      <br>
-                      <span class="current-humidity"></span>
-                      <br>
-                      <span class="current-uv"></span>
+                <!--Weather information-->
+            <div class="weatherbox col-md-8">
+              <div class="row p-2">
+                  <div class="card">
+                      <div class="card-body">
+                          <div class="cityDate info">{CITY HERE} {MM/DD/YYYY}</div>
+                          <br>
+                          <span class="current-temp">{X}°C</span>
+                          <br>
+                          <span class="current-windspeed">{WIND VALUE} MPH</span>
+                          <br>
+                          <span class="current-humidity">{HUMIDITY VALUE} %</span>
+                          <br>
+                          <span class="current-uv">{UV INDEX VALUE}</span>
+                      </div>
+                  </div>
+                  <!-- 5-Day Forecast -->
+                  <div class="row forecast">
+                      <h4>5-Day Forecast:</h2>
                   </div>
               </div>
-
-              <!-- 5-Day Forecast -->
-              <div class="row forecast" id = "forecast">
-                <h4>5 Day Forecast</h2>
-              </div>
-              </div>
               <div class="fiveDayForecast row"></div>
-              </div>
-
-              </div>
-              </div>
+          </div>
 
 
-       
-    </main>
+            </div>
+        </div>
+  </div>
     
 </body>
 <script src="./assets/js/script.js"></script>
